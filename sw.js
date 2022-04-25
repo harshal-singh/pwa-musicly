@@ -1,4 +1,4 @@
-const staticCacheName = "static-cache-v1";
+const staticCacheName = "static-cache-v0";
 const dynamicCacheName = "dynamic-cache-v1";
 
 const assets = [
@@ -34,7 +34,7 @@ self.addEventListener("install", (e) => {
       .open(staticCacheName)
       .then((cache) => cache.addAll(assets))
       .catch((err) => {
-        return showMsg("❌ SW Installation Error", true);
+        return console.log("❌ SW Installation Error");
       })
   );
 
@@ -49,10 +49,12 @@ self.addEventListener("activate", (e) => {
     caches
       .keys()
       .then((keys) => {
+        console.log(`📥 SW Version ${staticCacheName.split("-")[2]}`);
+
         return Promise.all(keys.filter((key) => key !== staticCacheName).map((key) => caches.delete(key)));
       })
       .catch((err) => {
-        return showMsg("❌ SW Activation Error", true);
+        console.log("❌ SW Activation Error");
       })
   );
 });
@@ -80,7 +82,7 @@ self.addEventListener("fetch", (e) => {
           return caches.match("/fallback.html");
         }
 
-        return showMsg("❌ SW Fetching Error", true);
+        return console.log("❌ SW Fetching Error");
       })
   );
 });
