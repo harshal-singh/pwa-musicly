@@ -1,5 +1,5 @@
-const staticCacheName = "static-cache-v3";
-const dynamicCacheName = "dynamic-cache-v3";
+const staticCacheName = "static-cache-v1";
+const dynamicCacheName = "dynamic-cache-v1";
 
 const assets = [
   "./manifest.json",
@@ -22,6 +22,7 @@ const assets = [
   "./js/html5-qrcode.min.js",
   "./sounds/notification.mp3",
   "https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap",
+  "https://fonts.gstatic.com/s/exo2/v19/7cHmv4okm5zmbtYoK-4.woff2",
 ];
 
 // installing service worker
@@ -49,9 +50,10 @@ self.addEventListener("activate", (e) => {
     caches
       .keys()
       .then((keys) => {
-        console.log(`📥 SW Version ${staticCacheName.split("-")[2]}`);
-
         return Promise.all(keys.filter((key) => key !== staticCacheName).map((key) => caches.delete(key)));
+      })
+      .then(() => {
+        console.log(`📥 SW Version ${staticCacheName.split("-")[2]}`);
       })
       .catch((err) => {
         console.log("❌ SW Activation Error");
