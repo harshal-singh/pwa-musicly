@@ -4,7 +4,7 @@
   "description": "Scan multiple type of QR Code with our app.",
   "id": "/",
   "start_url": "./",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#427aa1",
   "background_color": "#055c7f",
