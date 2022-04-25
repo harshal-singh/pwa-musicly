@@ -1,0 +1,44 @@
+{
+  "name": "QR Reader",
+  "short_name": "QR Reader",
+  "description": "Scan multiple type of QR Code with our app.",
+  "id": "/",
+  "start_url": "./",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
+  "theme_color": "#427aa1",
+  "background_color": "#055c7f",
+  "icons": [
+    {
+      "src": "./icons/56x56.png",
+      "sizes": "56x56",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/112x112.png",
+      "sizes": "112x112",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/196x196.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
