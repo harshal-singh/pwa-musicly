@@ -79,7 +79,7 @@ self.addEventListener("fetch", (e) => {
       .catch((err) => {
         // if user offline req for new page return offline page
         if (e.request.url.indexOf(".html") > -1) {
-          return caches.match("/fallback.html");
+          return caches.match("./fallback.html");
         }
 
         return console.log("❌ SW Fetching Error");
