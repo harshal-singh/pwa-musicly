@@ -39,7 +39,7 @@
           <p id="qr-message">
             Scan any QR Code. <br />
             Or <br />
-            Upload QR Code image to scan.
+            <!-- Upload QR Code image to scan. -->
           </p>
         </div>
       </div>
@@ -87,7 +87,7 @@
             showMsg("✅ SW Registered", false);
 
             register.onupdatefound = () => {
-              alert("Updating QR Reader...");
+              alert("Updating app...");
               register.installing.onstatechange = (e) => {
                 const { state, onstatechange } = register.active;
                 if (state === "activated" && onstatechange) {
