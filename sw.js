@@ -1,5 +1,5 @@
-const staticCacheName = "static-cache-v0";
-const dynamicCacheName = "dynamic-cache-v0";
+const staticCacheName = "static-cache-v1";
+const dynamicCacheName = "dynamic-cache-v1";
 
 const assets = [
   "./manifest.json",
