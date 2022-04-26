@@ -1,5 +1,5 @@
-const staticCacheName = "static-cache-v1";
-const dynamicCacheName = "dynamic-cache-v1";
+const staticCacheName = "static-cache-demo";
+const dynamicCacheName = "dynamic-cache-demo";
 
 const assets = [
   "./manifest.json",
@@ -52,11 +52,8 @@ self.addEventListener("activate", (e) => {
       .then((keys) => {
         return Promise.all(keys.filter((key) => key !== staticCacheName).map((key) => caches.delete(key)));
       })
-      .then(() => {
-        console.log(`📥 SW Version ${staticCacheName.split("-")[2]}`);
-      })
       .catch((err) => {
-        console.log("❌ SW Activation Error");
+        console.log("❌ SW Activation Error", err);
       })
   );
 });

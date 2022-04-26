@@ -85,6 +85,16 @@
           .register("sw.js")
           .then((register) => {
             showMsg("✅ SW Registered", false);
+
+            register.onupdatefound = () => {
+              alert("Updating QR Reader...");
+              register.installing.onstatechange = (e) => {
+                const { state, onstatechange } = register.active;
+                if (state === "activated" && onstatechange) {
+                  location.reload();
+                }
+              };
+            };
           })
           .catch((error) => {
             showMsg("❌ SW Not Registered", true);
