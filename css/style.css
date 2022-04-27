@@ -35,7 +35,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 header #logo {
@@ -54,6 +54,7 @@ header #logo img {
 }
 
 #music_list .music {
+  cursor: pointer;
   width: 100%;
   padding: 12px 24px;
   text-decoration: none;
