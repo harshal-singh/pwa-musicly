@@ -1,5 +1,8 @@
 "use strict";
 
+window.ononline = () => location.reload();
+window.onoffline = () => alert("No internet connection available. Please connection to internet.");
+
 const body = document.querySelector("body");
 const curr_track = document.querySelector("audio");
 
@@ -87,6 +90,11 @@ const addQueryParam = (key, value) => {
 
 // loads track details
 function loadTrack() {
+  if (!window.navigator.onLine) {
+    alert("No internet connection available. Please connection to internet first");
+    return;
+  }
+
   // get values from parmas
   const urlSearchParams = new URLSearchParams(window.location.search);
   const { song_id } = Object.fromEntries(urlSearchParams.entries());

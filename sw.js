@@ -18,6 +18,10 @@ const assets = [
   "./icons/512x512.png",
   "./icons/favicon.png",
   "./images/logo.png",
+  "./images/1_paagal.jpg",
+  "./images/2_o_saki_saki.jpg",
+  "./images/3_aankh_marey.jpg",
+  "./images/4_naach_meri_rani.jpg",
   "./js/main.js",
 ];
 
@@ -78,9 +82,9 @@ self.addEventListener("fetch", (e) => {
       })
       .catch((err) => {
         // // if user offline req for new page return offline page
-        // if (e.request.url.indexOf(".html") > -1) {
-        //   return caches.match("./fallback.html");
-        // }
+        if (e.request.url.indexOf(".mp3") > -1) {
+          return "";
+        }
         console.log(err);
         return console.log("❌ SW Fetching Error");
       })
