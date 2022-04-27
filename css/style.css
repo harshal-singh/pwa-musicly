@@ -1,313 +1,209 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 12px;
-  font-weight: 400;
-  font-family: "Exo 2", sans-serif;
+  user-select: none;
 }
 
 :root {
-  --primary: #055c7f;
-  --secondary: #427aa1;
-  --ternary: #607d8b;
-  --white: #fafafa;
-  --gray: #adb5bd;
+  --primary: #6e78ff;
+  --secondary: #263238;
+  --light-gray: #f9f9f9;
+  --dark-gray: #808080;
+  --gray: #ddd;
 }
 
-::selection {
-  color: var(--white);
-  background-color: var(--primary);
-}
-
+/* body */
 body {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  padding: 50px 12px 50px 12px;
-  background-color: var(--white);
+  background-color: var(--light-gray);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-a {
-  color: var(--secondary);
+/* container */
+.container {
+  margin: 0 auto;
+  padding: 24px;
+  width: 1200px;
 }
 
-p {
-  margin-bottom: 0;
-}
-
-/* -------------------- main -------------------- */
-
-main {
-  width: 100%;
-  /* opacity: 0; */
-  /* transition: opacity 1.5s ease-in; */
-}
-
-/* -------------------- nav -------------------- */
-
-nav {
-  z-index: 1;
+/* header */
+header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  padding: 6px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--primary);
-  box-shadow: 0 0 4px rgba(0 0 0 / 10%);
 }
 
-#logo {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 2px;
+header #logo {
+  max-height: 28px;
+  display: inline-block;
 }
 
-#total-users {
+header #logo img {
+  filter: invert(1);
+}
+
+/* music list */
+#music_list {
+  margin: 100px 0;
+  border-top: 2px solid var(--gray);
+}
+
+#music_list .music {
+  width: 100%;
+  padding: 12px 24px;
+  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--gray);
+  color: var(--secondary);
+  text-transform: capitalize;
+}
+
+#music_list .music > div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-#users-count {
-  font-size: 12px;
-  margin-left: 4px;
-  padding-left: 4px;
-  color: var(--white);
-  border-left: 1px solid var(--white);
+#music_list .music > div span {
+  margin-right: 24px;
 }
 
-/* -------------------- loader -------------------- */
-
-#loader {
-  z-index: 1111;
-  position: fixed;
-  top: 0;
-  /* top: 100vh; */
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary);
-  transition: top 1s cubic-bezier(0.55, 0.06, 0.68, 0.19);
-}
-
-#loader::before {
-  position: absolute;
-  content: "";
-  width: 50px;
-  height: 50px;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url(./../icons/qr.gif);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-#loader::after {
-  position: absolute;
-  content: "QR Reader";
-  top: 60%;
-  left: 50%;
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 600;
-  transform: translate(-50%, -50%);
-}
-
-/* -------------------- message box -------------------- */
-
-#layer {
-  z-index: 2;
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(0 0 0 / 50%);
-  backdrop-filter: blur(2px);
-  transition: position 500ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-#msg-box {
-  min-width: 160px;
-  max-width: 80%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  padding: 16px 0;
-  text-align: center;
-  border-radius: 4px;
-  background-color: var(--white);
-  transition: transform 500ms cubic-bezier(0.18, 0.89, 0.32, 1.2);
-}
-
-#msg {
-  min-height: 56px;
-  margin-top: 14px;
-  padding: 16px 12px 0;
-  border-top: 1px solid var(--primary);
-}
-
-#close-text {
-  display: block;
-  margin-top: 16px;
-  color: var(--primary);
-}
-
-/* -------------------- footer -------------------- */
+/* player */
 
 footer {
-  z-index: 1;
+  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  color: var(--white);
-  padding: 7px 12px 7px;
+  background-color: var(--gray);
+}
+
+footer .bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 -6px 2px var(--white);
-  background-color: var(--ternary);
 }
 
-footer p {
-  width: 33.33%;
-}
-
-footer p:nth-child(1) {
-  text-align: left;
-  /* visibility: hidden; */
-}
-
-footer p:nth-child(2) {
-  text-align: center;
-  visibility: hidden;
-}
-
-footer p:nth-child(3) {
-  text-align: right;
-  /* visibility: hidden; */
-}
-
-/* -------------------- options -------------------- */
-
-#options {
+.control {
   width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  bottom: -100vh;
+}
+
+.time-line-bg {
+  cursor: pointer;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: var(--dark-gray);
+}
+
+.time-line {
+  width: 0%;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--secondary);
+}
+
+.time {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  backdrop-filter: blur(2px);
-  background: rgb(0 0 0 / 60%);
-  transition: bottom 200ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--dark-gray);
+  margin-top: 6px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
 }
 
-#options button {
-  width: 100%;
+.btn {
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#prev,
+#next,
+#paly-pause,
+#repeat-one,
+#shuffle {
+  cursor: pointer;
   border: none;
   outline: none;
-  display: block;
-  text-align: left;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--white);
+  background-color: transparent;
 }
 
-#options button:focus {
-  color: var(--white);
-  background-color: var(--secondary);
+#repeat-one {
+  margin-right: 25px;
 }
 
-/* -------------------- Html5QRScanner -------------------- */
-
-/* reader */
-#reader {
-  height: 210px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--gray);
+#shuffle {
+  margin-left: 25px;
 }
 
-#reader div {
-  text-align: center;
+.image-title-box {
+  display: flex;
+  align-items: center;
 }
 
-#reader img {
-  margin-bottom: 18px;
+#image {
+  margin-right: 12px;
 }
 
-#reader p {
-  line-height: 18px;
+.text #song__title {
+  text-transform: capitalize;
 }
 
-/* hide image file */
-#qr-canvas-visible {
-  display: none !important;
-}
-
-/* video */
-video {
-  z-index: 1;
-  position: relative;
-  left: -48px;
-  width: 280px !important;
-}
-
-/* -------------------- result -------------------- */
-
-#result {
-  position: fixed;
-  top: 100vh;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 50px 12px;
-  display: grid;
-  place-items: center;
-  background-color: var(--white);
-  transition: top 500ms cubic-bezier(0.55, 0.06, 0.68, 0.19);
-  overflow: scroll;
-}
-
-#result div {
-  width: 100%;
-  max-width: 216px;
-  height: 100%;
-  padding: 16px 12px;
-  border: 1px solid var(--gray);
-}
-
-#result h1 {
-  color: var(--secondary);
-  font-size: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--gray);
-}
-
-#result p {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  word-wrap: break-word;
-}
-
-#result span {
-  display: block;
+.text #song__artist {
+  color: var(--dark-gray);
   margin-top: 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 1024px;
+  }
+}
+
+@media (max-width: 990px) {
+  .container {
+    padding: 12px;
+    width: 100%;
+  }
+
+  #music_list {
+    margin-top: 64px;
+  }
+
+  #music_list .music {
+    padding: 12px;
+  }
+
+  #music_list .music > div span {
+    margin-right: 12px;
+  }
+
+  #music_list .music small {
+    font-size: 12px;
+  }
+
+  .text #song__title {
+    font-size: 16px;
+  }
+  .text #song__artist {
+    font-size: 10px;
+    max-width: 175px;
+  }
+
+  .btn {
+    width: 120px;
+  }
 }

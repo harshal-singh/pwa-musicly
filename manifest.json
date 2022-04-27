@@ -1,8 +1,8 @@
 {
-  "name": "QR Reader",
-  "short_name": "QR Reader",
-  "description": "Scan multiple type of QR Code with our app.",
-  "id": "/",
+  "name": "Musicly",
+  "short_name": "Musicly",
+  "description": "All bollywood song in one app for free.",
+  "id": "./",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -12,6 +12,16 @@
     {
       "src": "./icons/56x56.png",
       "sizes": "56x56",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
     },
     {
@@ -30,10 +40,20 @@
       "type": "image/png"
     },
     {
+      "src": "./icons/152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
       "src": "./icons/196x196.png",
       "sizes": "196x196",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "./icons/384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
     },
     {
       "src": "./icons/512x512.png",

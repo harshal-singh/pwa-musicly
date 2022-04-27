@@ -1,1 +1,1 @@
-# pwa-qr-reader
+# pwa-musicly
