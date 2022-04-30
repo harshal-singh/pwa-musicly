@@ -1,6 +1,6 @@
 "use strict";
 
-window.ononline = () => location.reload();
+// window.ononline = () => location.reload();
 window.onoffline = () => alert("No internet connection available. Please connection to internet.");
 
 const body = document.querySelector("body");
@@ -85,7 +85,7 @@ const addQueryParam = (key, value) => {
   window.history.pushState({}, "", url.toString());
 
   loadTrack();
-  playTrack();
+  setTimeout(playTrack, 1000);
 };
 
 // loads track details

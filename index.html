@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#dddddd" />
-    <meta name="apple-mobile-web-app-status-bar" content="#dddddd" />
+    <meta name="theme-color" content="#263238" />
+    <meta name="apple-mobile-web-app-status-bar" content="#263238" />
     <title>Musicly</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="manifest" href="manifest.json" />
@@ -106,15 +106,18 @@
           .register("sw.js")
           .then((register) => {
             // alert("✅ SW Registered");
-            // register.onupdatefound = () => {
-            //   register.installing.onstatechange = (e) => {
-            //     const { state, onstatechange } = register.active;
-            //     if (state === "activated" && onstatechange) {
-            //       alert("App updated successfully. To apply changes please restart app again.");
-            //       window.close();
-            //     }
-            //   };
-            // };
+            register.onupdatefound = () => {
+              const installingWorker = register.installing;
+              installingWorker.onstatechange = (e) => {
+                if (installingWorker.state === "installed") {
+                  // new update available
+                  if (navigator.serviceWorker.controller) {
+                    alert("App updated, please restart.");
+                    window.close();
+                  }
+                }
+              };
+            };
           })
           .catch((error) => {
             console.log(error);

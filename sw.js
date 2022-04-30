@@ -50,7 +50,9 @@ self.addEventListener("activate", (e) => {
     caches
       .keys()
       .then((keys) => {
-        return Promise.all(keys.filter((key) => key !== staticCacheName).map((key) => caches.delete(key)));
+        return Promise.all(
+          keys.filter((key) => key !== staticCacheName && key !== dynamicCacheName).map((key) => caches.delete(key))
+        );
       })
       .catch((err) => {
         console.log("❌ SW Activation Error", err);
@@ -64,16 +66,17 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches
       .match(e.request)
-      .then(async (cacheRes) => {
+      .then((cacheRes) => {
         return (
           cacheRes ||
-          fetch(e.request).then(async (fetchRes) => {
-            return caches.open(dynamicCacheName).then((cache) => {
-              // if req is for song - dont cache it
-              if (e.request.url.indexOf(".mp3") > -1) {
-                return fetchRes;
-              }
+          fetch(e.request).then((fetchRes) => {
+            // if req is for song or page with query - dont cache them
+            if (e.request.url.indexOf(".mp3") > -1 || e.request.url.indexOf("?song_id=") > -1) {
+              return fetchRes;
+            }
 
+            // add fetch res to dynamic cache
+            return caches.open(dynamicCacheName).then((cache) => {
               cache.put(e.request.url, fetchRes.clone());
               return fetchRes;
             });
@@ -81,7 +84,7 @@ self.addEventListener("fetch", (e) => {
         );
       })
       .catch((err) => {
-        // // if user offline req for new page return offline page
+        // if user offline req for new song return ""
         if (e.request.url.indexOf(".mp3") > -1) {
           return "";
         }
